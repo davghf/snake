@@ -43,10 +43,11 @@ class OptionsMenu:
             elif event.type == pygame.KEYUP:
                 if event.key == pygame.K_SPACE or event.key == pygame.K_KP_ENTER:
                     match self.selected_button:
-                        case SelectedButton.RESOLUTION:
-                            pass
                         case SelectedButton.EXIT:
+                            self.selected_button = SelectedButton.RESOLUTION
                             return Action.GO_TO_MAIN_MENU
+                        case _:
+                            pass
                 else:
                     up_released = event.key == pygame.K_UP 
                     down_released = event.key == pygame.K_DOWN

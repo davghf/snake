@@ -72,3 +72,9 @@ class Selector:
             printed_text = font.render(self.__texts[self.__cur_value], False, (255, 255, 255))
 
         self.surface.blit(printed_text, ((width - printed_text.width) / 2, (height - printed_text.height) / 2 + 2))
+
+        left_arrow_text = font.render("<", False, (255, 255, 255))
+        right_arrow_text = font.render(">", False, (255, 255, 255))
+
+        self.surface.blit(left_arrow_text, (6, (height - printed_text.height) / 2 + 2))
+        self.surface.blit(right_arrow_text, (width - right_arrow_text.width - 6, (height - printed_text.height) / 2 + 2))
