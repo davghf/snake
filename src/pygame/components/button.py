@@ -1,12 +1,6 @@
 import pygame
 
-button_font: pygame.Font | None = None
-
-def get_button_font() -> pygame.Font:
-    global button_font
-    if button_font is None:
-        button_font = pygame.font.Font("res/fonts/Minecraft.ttf", size=14)
-    return button_font
+from src.pygame.config import get_ui_font
 
 
 class Button:
@@ -38,7 +32,7 @@ class Button:
             bg_color = pygame.Color(0, 0, 0)
 
         self.surface.fill(bg_color, pygame.Rect(border_width, border_width, width - 2 * border_width, height - 2 * border_width))
-        font = pygame.font.Font("res/fonts/Minecraft.ttf", size=round(14))
+        font = get_ui_font()
         printed_text = font.render(self.__text, False, (255, 255, 255))
 
         self.surface.blit(printed_text, ((width - printed_text.width) / 2, (height - printed_text.height) / 2 + 2))

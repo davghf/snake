@@ -1,8 +1,12 @@
 
+import pygame
 from enum import Enum
 
 screen_width: float = 640
 screen_height: float = 480
+
+music_level: int = 5
+sfx_level: int = 5
 
 
 # Resolutions: 640 x 480, 960 x 720, 1280 x 960
@@ -12,6 +16,16 @@ class Resolution(Enum):
     R_1280_X_960 = 2
 
 screen_resolution: Resolution = Resolution.R_640_X_480
+
+
+
+ui_font: pygame.Font | None = None
+
+def get_ui_font() -> pygame.Font:
+    global ui_font
+    if ui_font is None:
+        ui_font = pygame.font.Font("res/fonts/Minecraft.ttf", size=14)
+    return ui_font
 
 
 class GameState(Enum):
@@ -27,3 +41,5 @@ class Action(Enum):
     GO_TO_OPTIONS_MENU = 3
     GO_TO_GAME = 4
     UPDATE_RESOLUTION = 5
+    UPDATE_MUSIC_LEVEL = 6
+    UPDATE_SFX_LEVEL = 7

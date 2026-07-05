@@ -75,6 +75,8 @@ class MainMenu:
             case SelectedButton.EXIT:
                 self.exit_button.update(hovered=True)
 
-        self.surface.blit(self.start_button.surface, (100, 100))
-        self.surface.blit(self.options_button.surface, (100, 200))
-        self.surface.blit(self.exit_button.surface, (100, 300))
+        left_margin = 260
+
+        self.surface.blit(self.start_button.surface, (left_margin, 100))
+        self.surface.blit(self.options_button.surface, (left_margin, 200))
+        self.surface.blit(self.exit_button.surface, (left_margin, 300))
