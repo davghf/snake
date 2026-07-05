@@ -24,7 +24,7 @@ ui_font: pygame.Font | None = None
 def get_ui_font() -> pygame.Font:
     global ui_font
     if ui_font is None:
-        ui_font = pygame.font.Font("res/fonts/Minecraft.ttf", size=14)
+        ui_font = pygame.font.Font("res/fonts/determination.ttf", size=12)
     return ui_font
 
 
@@ -32,6 +32,7 @@ class GameState(Enum):
     MAIN_MENU = 1
     OPTIONS_MENU = 3
     GAME = 2
+    LEVEL_SELECTION = 4
 
 
 class Action(Enum):
@@ -39,6 +40,7 @@ class Action(Enum):
     QUIT = 1
     GO_TO_MAIN_MENU = 2
     GO_TO_OPTIONS_MENU = 3
+    GO_TO_LEVEL_SELECTOR = 8
     GO_TO_GAME = 4
     UPDATE_RESOLUTION = 5
     UPDATE_MUSIC_LEVEL = 6

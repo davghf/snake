@@ -34,7 +34,7 @@ class MainMenu:
                 if event.key == pygame.K_SPACE or event.key == pygame.K_KP_ENTER:
                     match self.selected_button:
                         case SelectedButton.START:
-                            return Action.GO_TO_GAME
+                            return Action.GO_TO_LEVEL_SELECTOR
                         case SelectedButton.OPTIONS:
                             return Action.GO_TO_OPTIONS_MENU
                         case SelectedButton.EXIT:

@@ -1,5 +1,6 @@
 import pygame
 
+from src.pygame.scenes.level_selector import LevelSelector
 from src.pygame import config
 from src.pygame.config import Action, screen_width, screen_height, GameState, Resolution
 
@@ -22,6 +23,7 @@ class Controller:
         self.state = GameState.MAIN_MENU
         self.main_menu = MainMenu()
         self.options_menu = OptionsMenu()
+        self.level_selector = LevelSelector()
 
 
 
@@ -49,6 +51,10 @@ class Controller:
                 case GameState.OPTIONS_MENU:
                     self.options_menu.update()
                     scene = self.options_menu.surface
+                case GameState.LEVEL_SELECTION:
+                    self.level_selector.update()
+                    scene = self.level_selector.surface
+
             
             if scene is not None:
                 scaled_scene = pygame.transform.scale(scene, (scene.width * self.scale, scene.height * self.scale))
@@ -71,12 +77,16 @@ class Controller:
                 action = self.main_menu.check_events(events)
             case GameState.OPTIONS_MENU:
                 action = self.options_menu.check_events(events)
+            case GameState.LEVEL_SELECTION:
+                action = self.level_selector.check_events(events)
             
         match action: 
             case Action.QUIT:
                 self.running = False
             case Action.GO_TO_MAIN_MENU:
                 self.state = GameState.MAIN_MENU
+            case Action.GO_TO_LEVEL_SELECTOR:
+                self.state = GameState.LEVEL_SELECTION
             case Action.GO_TO_OPTIONS_MENU:
                 self.state = GameState.OPTIONS_MENU
             case Action.UPDATE_RESOLUTION:
